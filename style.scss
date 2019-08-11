@@ -1,0 +1,49 @@
+$color-dark:#333;
+$color-light:#fff;
+$w:800px;
+$h:600px;
+@mixin center{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+}
+
+body{
+    background-color: $color-dark;
+}
+#slide{
+    height: $h;
+    width: $w;
+    border: $h*0.01 solid lighten($color-dark,15%);
+    @include center;
+    
+
+    div{
+       height: $h/6;
+       width: $w/8;
+       background-image: url(images/1.jpg);
+       float: left; 
+
+       @for $n from 1 through 48 {
+
+        &:nth-child(#{$n}){
+           background-position:( $n - 1) * - 100px  floor(( $n - 1) / 8) * - 100px;
+           animation: effect-2 1s;
+           animation-delay: 0.1s*random(50);
+           transform: rotate(0deg) translateX(-500px) translateY(-500px);
+           animation-fill-mode: forwards;
+           }
+             }
+             }
+             }
+@keyframes effect-2{
+     from{
+         transform: rotate(180deg) scale(2) translateX(-500px) translateY(-500px);
+     }
+     to{
+         transform: rotate(0deg) scale(1) translateX(0px) translateY(0px);
+     }
+ }
